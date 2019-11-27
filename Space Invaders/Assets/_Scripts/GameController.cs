@@ -3,6 +3,7 @@ using System.Collections;
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class GameController : MonoBehaviour
 
 	public GUIText scoreText;
 	public GUIText restartText;
-	public GUIText gameOverText;
 
 	private bool gameOver;
 	private bool restart;
@@ -26,7 +26,6 @@ public class GameController : MonoBehaviour
 		gameOver = false;
 		restart = false;
 		restartText.text = "";
-		gameOverText.text = "";
 		score = 0;
 		UpdateScore ();
 		StartCoroutine (SpawnWaves ());
@@ -79,7 +78,7 @@ public class GameController : MonoBehaviour
 
 	public void GameOver ()
 	{
-		gameOverText.text = "Game Over!";
-		gameOver = true;
+        SceneManager.LoadScene("GameOver");
+        gameOver = true;
 	}
 }
